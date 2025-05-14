@@ -1,0 +1,3 @@
+user-agent: *
+
+sitemap: https://moleengine-docs.web.app/sitemap.xml

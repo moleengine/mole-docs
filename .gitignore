@@ -1,0 +1,7 @@
+_build/
+env/
+_extensions/__pycache__/
+*~
+.directory
+.idea/
+venv/

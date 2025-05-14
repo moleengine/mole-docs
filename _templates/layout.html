@@ -1,0 +1,18 @@
+{% extends "!layout.html" -%}
+{% block linktags -%}
+  {% if mole_inject_language_links -%}
+  {% for alternate_lang in mole_docs_supported_languages -%}
+  {# Convert to ISO 639-1 format, e.g. zh_CN -> zh-cn -#}
+  {% set alternate_lang_href = alternate_lang.lower().replace("_", "-") -%}
+  <link rel="alternate" hreflang="{{ alternate_lang_href }}" href="{{ mole_docs_basepath }}{{ alternate_lang }}/{{ mole_canonical_version }}/{{ pagename }}{{ mole_docs_suffix }}" />
+  {% endfor -%}
+  <link rel="alternate" hreflang="x-default" href="{{ mole_docs_basepath }}{{ mole_default_lang }}/{{ mole_canonical_version }}/{{ pagename }}{{ mole_docs_suffix }}" />
+
+  <link rel="canonical" href="{{ mole_docs_basepath }}{{ lang_attr }}/{{ mole_canonical_version }}/{{ pagename }}{{ mole_docs_suffix }}" />
+  {% endif -%}
+  {{ super() }}
+{% endblock -%}
+
+{% block htmltitle -%}
+<title>{{ mole_title_prefix }}{{ title|striptags|e }}{{ titlesuffix }}</title>
+{% endblock -%}
